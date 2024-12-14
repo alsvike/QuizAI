@@ -90,7 +90,7 @@ python quiz_ai.py
 Nothing here yet! As more changes come to the python script, then you can see what changes have been made here
 
 ## 📄 Future Features:
-Priorities are as following: HIGH, MEDIUM, LOW - Stated before each future feature:
+### Priorities are as following: HIGH, MEDIUM, LOW:
 - (HIGH) Add the ability to use OpenAI API, Claude AI API etc. instead of only Groq API
 - (HIGH) Add a difficulty to prompt, so the user can select what kind of difficulty they want the questions to be.
 - (HIGH) Add the ability for user profiles, where you can get:
@@ -98,6 +98,10 @@ Priorities are as following: HIGH, MEDIUM, LOW - Stated before each future featu
   - Stats tracking (Total questions answered, right/wrong ratio etc.)
 - (MEDIUM) Time-challenges (Choose between Easy, Medium og Hard)
 - (MEDIUM) Track how many questions you've answered correctly in a game
+
+## 🐛 BUGS
+### Priorities are as following: HIGH, MEDIUM, LOW
+- (LOW) When answering correct on a question in a given subject, you should not continously select a new subject, but continue on the first chosen subject.
 
 ## 🤝 Contributing
 
