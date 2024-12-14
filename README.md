@@ -1,4 +1,3 @@
-```markdown
 # QuizAI - Interactive Quiz Generator
 
 QuizAI is a Python application that uses Groq's AI to dynamically generate subject-specific quiz questions. It challenges users in an endless quiz mode, where one wrong answer ends the game. This README provides clear instructions to help any user set up and run the script without issues.
@@ -85,4 +84,3 @@ python quiz_ai.py
 ---
 
 Enjoy your quiz experience with QuizAI!
-```
