@@ -92,7 +92,7 @@ Nothing here yet! As more changes come to the python script, then you can see wh
 ## 📄 Future Features:
 ##### Priorities are as following: HIGH, MEDIUM, LOW:
 - (HIGH) Add the ability to use OpenAI API, Claude AI API etc. instead of only Groq API
-~~- (HIGH) Add a difficulty to prompt, so the user can select what kind of difficulty they want the questions to be.~~
+- ~~(HIGH) Add a difficulty to prompt, so the user can select what kind of difficulty they want the questions to be.~~
 - (HIGH) Add the ability for user profiles, where you can get:
   - Achievements
   - Stats tracking (Total questions answered, right/wrong ratio etc.)
