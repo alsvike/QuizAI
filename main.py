@@ -20,6 +20,17 @@ VALID_SUBJECTS = [
     'Health', 'Foreign Language', 'Other'
 ]
 
+# Difficulty levels
+DIFFICULTY_LEVELS = {
+    1: "Very Easy (Levels 1-3)",
+    2: "Easy (Levels 1-3)",
+    3: "Medium-Easy (Levels 3-4)",
+    4: "Medium (Levels 4-6)",
+    5: "Medium-Hard (Levels 6-7)",
+    6: "Hard (Levels 7-9)",
+    7: "Very Hard (Levels 8-10)"
+}
+
 class QuizAI:
     def __init__(self, api_key: Optional[str] = None):
         """
@@ -38,18 +49,30 @@ class QuizAI:
         # Initialize Groq client
         self.client = Groq(api_key=self.api_key)
     
-    def generate_quiz_prompt(self, subject: str) -> str:
+    def generate_quiz_prompt(self, subject: str, difficulty: int) -> str:
         """
         Generate a standardized prompt for QuizAI question generation.
         
         Args:
             subject (str): The subject for the QuizAI question
+            difficulty (int): Difficulty level from 1 to 7
         
         Returns:
             str: Formatted prompt for question generation
         """
+        # Map difficulty to actual difficulty ranges
+        difficulty_mapping = {
+            1: "1-3",   # Very Easy
+            2: "1-3",   # Easy
+            3: "3-4",   # Medium-Easy
+            4: "4-6",   # Medium
+            5: "6-7",   # Medium-Hard
+            6: "7-9",   # Hard
+            7: "8-10"   # Very Hard
+        }
+        
         return f"""
-Generate a question in the subject {subject}, ensuring it is directly relevant to the subject and does not stray into other disciplines. The question should have a difficulty level of 5 (medium) on a scale from 1 to 10. Use the following guidelines for difficulty levels:
+Generate a question in the subject {subject}, ensuring it is directly relevant to the subject and does not stray into other disciplines. The question should have a difficulty level in the range {difficulty_mapping[difficulty]} on a scale from 1 to 10. Use the following guidelines for difficulty levels:
 
 Levels 1–3: Easy — Simple, well-known facts or basic concepts. Requires minimal recall or thought.
 Levels 4–6: Medium — Moderately challenging, involving less common knowledge or questions requiring some analysis or contextual understanding.
@@ -59,15 +82,16 @@ Return the result as a JSON object without any additional text, explanations, or
 question: A well-phrased question that directly pertains to the specified subject.
 choice1, choice2, choice3, choice4: Four distinct answer options as complete pieces of text.
 correctAnswer: The exact text of the correct answer, not the label (e.g., choice2), but the full text of the correct answer.
-Ensure that the question fits the specified difficulty (level 5) by requiring moderate knowledge or analysis. The incorrect choices should be plausible but clearly distinguishable from the correct one. Focus strictly on the chosen subject and its relevant concepts. Return only the JSON object.
+Ensure that the question fits the specified difficulty level by requiring knowledge or analysis appropriate to the difficulty range. The incorrect choices should be plausible but clearly distinguishable from the correct one. Focus strictly on the chosen subject and its relevant concepts. Return only the JSON object.
 """
     
-    def get_quiz_question(self, subject: str) -> Dict:
+    def get_quiz_question(self, subject: str, difficulty: int) -> Dict:
         """
         Retrieve a quiz question for the given subject in QuizAI.
         
         Args:
             subject (str): The subject for the quiz question
+            difficulty (int): Difficulty level from 1 to 7
         
         Returns:
             Dict: Parsed quiz question data
@@ -77,7 +101,7 @@ Ensure that the question fits the specified difficulty (level 5) by requiring mo
             chat_completion = self.client.chat.completions.create(
                 messages=[
                     {"role": "system", "content": "You are a helpful assistant specialized in writing formal documents."},
-                    {"role": "user", "content": self.generate_quiz_prompt(subject)}
+                    {"role": "user", "content": self.generate_quiz_prompt(subject, difficulty)}
                 ],
                 model="llama3-8b-8192",
             )
@@ -116,8 +140,22 @@ Ensure that the question fits the specified difficulty (level 5) by requiring mo
                         break
                     print("Invalid subject. Please choose from the list.")
                 
+                # Get difficulty input with validation
+                while True:
+                    print("\nSelect Difficulty Level:")
+                    for key, value in DIFFICULTY_LEVELS.items():
+                        print(f"{key}. {value}")
+                    
+                    try:
+                        difficulty = int(input("\nEnter the number of your chosen difficulty: "))
+                        if difficulty in DIFFICULTY_LEVELS:
+                            break
+                        print("Invalid difficulty. Please select a number between 1 and 7.")
+                    except ValueError:
+                        print("Please enter a numeric value between 1 and 7.")
+                
                 # Generate and display quiz question
-                quiz_data = self.get_quiz_question(subject)
+                quiz_data = self.get_quiz_question(subject, difficulty)
                 
                 print(f"\nQuestion: {quiz_data['question']}\n")
                 print("Choices:")
