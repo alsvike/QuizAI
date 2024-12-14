@@ -79,9 +79,19 @@ python quiz_ai.py
 - Numeric input validation for answer selection
 - Graceful error handling and logging
 
-## 📄 License
 
-[Specify your license here, e.g., MIT License]
+## 📜 Changelog
+Nothing here yet! As more changes come to the python script, then you can see what changes have been made here
+
+## 📄 Future Features:
+Priorities are as following: HIGH, MEDIUM, LOW - Stated before each future feature:
+- (HIGH) Add the ability to use OpenAI API, Claude AI API etc. instead of only Groq API
+- (HIGH) Add a difficulty to prompt, so the user can select what kind of difficulty they want the questions to be.
+- (HIGH) Add the ability for user profiles, where you can get:
+  - Achievements
+  - Stats tracking (Total questions answered, right/wrong ratio etc.)
+- (MEDIUM) Time-challenges (Choose between Easy, Medium og Hard)
+- (MEDIUM) Track how many questions you've answered correctly in a game
 
 ## 🤝 Contributing
 
