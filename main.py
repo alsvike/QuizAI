@@ -181,6 +181,14 @@ Ensure that the question fits the specified difficulty level by requiring knowle
                     print(f"\n❌ Incorrect. The correct answer is: {quiz_data['correctAnswer']}")
                     print(f"\n🏁 Game Over! Your final score is: {score}")
                     break
+            retry = input("\nWould you like to play again? (yes/no): ").strip().lower()
+            if retry == "yes":
+                self.run_quiz()
+            elif retry == "y":
+                self.run_quiz()
+            else:
+                print("Thank you for playing QuizAI!")
+        
         
         except KeyboardInterrupt:
             print(f"\n\nQuizAI terminated by user. Final Score: {score}")
