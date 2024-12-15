@@ -6,7 +6,9 @@ QuizAI is an innovative and interactive quiz application designed to challenge a
 
 With a library of subjects ranging from Mathematics and Science to Art and Music, QuizAI adapts to your preferences, creating endless opportunities for learning and self-improvement. Each question is thoughtfully crafted with varying levels of difficulty to keep you engaged, whether you're brushing up on basics or diving into more advanced topics.
 
-Take on the Endless Quiz Challenge, where the goal is simple: keep answering correctly to advance and see how far your knowledge can take you! Packed with features like score tracking, progress feedback, and interactive question formats, QuizAI is perfect for both casual users and competitive learners looking to test their limits.
+Take control of your quiz journey by selecting your desired difficulty level—ranging from easy for beginners to hard for seasoned learners. This flexibility allows you to customize the challenge to match your skills and goals, ensuring a rewarding and tailored experience every time.
+
+Embrace the Endless Quiz Challenge, where the goal is simple: keep answering correctly to advance and see how far your knowledge can take you! Packed with features like score tracking, progress feedback, and interactive question formats, QuizAI is perfect for both casual users and competitive learners looking to test their limits.
 
 Dive in and make learning exciting—one question at a time!
 
@@ -92,7 +94,7 @@ Nothing here yet! As more changes come to the python script, then you can see wh
 ## 📄 Future Features:
 ##### Priorities are as following: HIGH, MEDIUM, LOW:
 - (HIGH) Add the ability to use OpenAI API, Claude AI API etc. instead of only Groq API
-- (HIGH) Add a difficulty to prompt, so the user can select what kind of difficulty they want the questions to be.
+- ~~(HIGH) Add a difficulty to prompt, so the user can select what kind of difficulty they want the questions to be.~~
 - (HIGH) Add the ability for user profiles, where you can get:
   - Achievements
   - Stats tracking (Total questions answered, right/wrong ratio etc.)
